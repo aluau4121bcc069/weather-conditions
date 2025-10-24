@@ -1,48 +1,51 @@
-const inputval = document.querySelector("#cityinput");
+const inputVal = document.querySelector("#cityinput");
 const btn = document.querySelector("#add");
 const city = document.querySelector("#cityoutput");
 const description = document.querySelector("#description");
 const temp = document.querySelector("#temp");
 const wind = document.querySelector("#wind");
+const errorMsg = document.querySelector("#errorMsg");
+const weatherIcon = document.querySelector("#weathericon");
 
-const apik = "3045dd712ffe6e702e3245525ac7fa38";
+const apiKey = "3045dd712ffe6e702e3245525ac7fa38";
 
 // Convert Kelvin to Celsius
-function conversion(val) {
+function kelvinToCelsius(val) {
   return (val - 273.15).toFixed(2);
 }
 
 btn.addEventListener("click", function () {
-  const cityName = inputval.value.trim();
+  const cityName = inputVal.value.trim();
+  errorMsg.textContent = "";
+  weatherIcon.style.display = "none";
 
   if (!cityName) {
-    alert("Please enter a city name.");
+    errorMsg.textContent = "Please enter a city name.";
     return;
   }
 
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apik}`
-  )
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
     .then((res) => {
       if (!res.ok) throw new Error("City not found");
       return res.json();
     })
     .then((data) => {
-      const nameval = data.name;
-      const descripVal = data.weather[0].description;
-      const tempVal = data.main.temp;
-      const wndspd = data.wind.speed;
+      city.textContent = `🌍 City: ${data.name}`;
+      temp.textContent = `🌡️ Temperature: ${kelvinToCelsius(data.main.temp)} °C`;
+      description.textContent = `🌤️ Conditions: ${data.weather[0].description}`;
+      wind.textContent = `💨 Wind Speed: ${data.wind.speed} km/h`;
 
-      city.innerHTML = `🌍 City: ${nameval}`;
-      temp.innerHTML = `🌡️ Temperature: ${conversion(tempVal)} °C`;
-      description.innerHTML = `🌤️ Conditions: ${descripVal}`;
-      wind.innerHTML = `💨 Wind Speed: ${wndspd} km/h`;
+      weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+      weatherIcon.style.display = "block";
+
+      inputVal.value = "";
     })
-    .catch((err) => {
-      alert("You entered an invalid city name.");
-      city.innerHTML = "";
-      temp.innerHTML = "";
-      description.innerHTML = "";
-      wind.innerHTML = "";
+    .catch(() => {
+      errorMsg.textContent = "You entered an invalid city name.";
+      city.textContent = "";
+      temp.textContent = "";
+      description.textContent = "";
+      wind.textContent = "";
+      weatherIcon.style.display = "none";
     });
 });
