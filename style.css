@@ -1,14 +1,16 @@
+/* Body styling */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #87cefa, #f0f8ff);
+  background: linear-gradient(to bottom, #87cefa, #f0f8ff); /* sky gradient */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
+/* Container styling */
 .container {
   background: rgba(255, 255, 255, 0.95);
   padding: 50px 70px;
@@ -24,12 +26,14 @@ body {
   transform: translateY(-5px);
 }
 
+/* Heading */
 h2 {
   margin-bottom: 25px;
   color: #333;
   font-size: 2rem;
 }
 
+/* Input section styling */
 .input-section {
   display: flex;
   gap: 15px;
@@ -67,12 +71,14 @@ h2 {
   transform: scale(1.05);
 }
 
+/* Error message styling */
 #errorMsg {
   color: red;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
+/* Weather display styling */
 .weather-display {
   margin-top: 20px;
   animation: fadeIn 0.5s ease-in-out;
@@ -85,18 +91,13 @@ h2 {
   font-size: 1.1rem;
 }
 
-#weathericon {
-  display: none;
-  margin: 0 auto 10px auto;
-  width: 120px;
-  height: 120px;
-}
-
+/* Fade-in animation */
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(10px);}
   to {opacity: 1; transform: translateY(0);}
 }
 
+/* Responsive design */
 @media (max-width: 600px) {
   .container {
     padding: 30px 20px;
@@ -105,9 +106,5 @@ h2 {
   .input-section input, .input-section button {
     font-size: 14px;
     padding: 10px;
-  }
-  #weathericon {
-    width: 100px;
-    height: 100px;
   }
 }
