@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🌦️ Weather App</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body style="background-color: skyblue">
-    <div class="container">
-      <h2>Weather App</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌦️ Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Weather App</h2>
 
-      <div class="input-section">
-        <label for="cityinput" class="sr-only">Enter city name</label>
-        <input
-          type="text"
-          id="cityinput"
-          placeholder="Enter city name"
-          aria-label="City name"
-          autocomplete="off"
-        />
-        <button id="add">Get Weather</button>
-      </div>
-
-      <div class="weather-display">
-        <h3 id="cityoutput"></h3>
-        <p id="description"></p>
-        <p id="temp"></p>
-        <p id="wind"></p>
-      </div>
+    <div class="input-section">
+      <input
+        type="text"
+        id="cityinput"
+        placeholder="Enter city name"
+        aria-label="City name"
+        autocomplete="off"
+      />
+      <button id="add">Get Weather</button>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <p id="errorMsg"></p>
+
+    <div class="weather-display">
+      <img id="weathericon" alt="Weather Icon" />
+      <h3 id="cityoutput"></h3>
+      <p id="description"></p>
+      <p id="temp"></p>
+      <p id="wind"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
