@@ -1,69 +1,113 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f2f2f2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  body {
-    background-color: aqua;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #87cefa, #f0f8ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 50px 70px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 2rem;
+}
+
+.input-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.input-section input {
+  flex: 1;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-section input:focus {
+  border-color: #009703;
+  box-shadow: 0 0 5px #009703;
+}
+
+.input-section button {
+  padding: 12px 20px;
+  background-color: #009703;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.input-section button:hover {
+  background-color: #94df98;
+  transform: scale(1.05);
+}
+
+#errorMsg {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.weather-display {
+  margin-top: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.weather-display h3,
+.weather-display p {
+  margin: 10px 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+#weathericon {
+  display: none;
+  margin: 0 auto 10px auto;
+  width: 120px;
+  height: 120px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@media (max-width: 600px) {
   .container {
-    background: white;
-    padding: 40px 60px;       
-    border-radius: 12px;
-    box-shadow: 0 0 25px rgba(44, 43, 43, 0.15);
-    width: 95%;
-    max-width: 600px;    
-    text-align: center
+    padding: 30px 20px;
   }
-  h2 {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .input-section {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .input-section input {
-    flex: 1;
+  h2 { font-size: 1.5rem; }
+  .input-section input, .input-section button {
+    font-size: 14px;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
   }
-  
-  .input-section button {
-    padding: 10px 15px;
-    background-color: #009703;
-    color: white;
-    border: none;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
+  #weathericon {
+    width: 100px;
+    height: 100px;
   }
-  
-  .input-section button:hover {
-    background-color: #94df98;
-  }
-  
-  .weather-display h3,
-  .weather-display p {
-    margin: 10px 0;
-    color: #555;
-  }
+}
