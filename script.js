@@ -1,44 +1,45 @@
-const inputVal = document.querySelector("#cityinput");
-const btn = document.querySelector("#add");
-const city = document.querySelector("#cityoutput");
-const description = document.querySelector("#description");
-const temp = document.querySelector("#temp");
-const wind = document.querySelector("#wind");
-const errorMsg = document.querySelector("#errorMsg");
+document.addEventListener("DOMContentLoaded", function() {
+  const inputVal = document.getElementById("cityinput");
+  const btn = document.getElementById("add");
+  const city = document.getElementById("cityoutput");
+  const description = document.getElementById("description");
+  const temp = document.getElementById("temp");
+  const wind = document.getElementById("wind");
+  const errorMsg = document.getElementById("errorMsg");
 
-const apiKey = "3045dd712ffe6e702e3245525ac7fa38"; // Replace with your key
+  const apiKey = "3045dd712ffe6e702e3245525ac7fa38"; // replace if needed
 
-function kelvinToCelsius(val) {
-  return (val - 273.15).toFixed(2);
-}
-
-btn.addEventListener("click", function () {
-  const cityName = inputVal.value.trim();
-  errorMsg.textContent = "";
-
-  if (!cityName) {
-    errorMsg.textContent = "Please enter a city name.";
-    return;
+  function kelvinToCelsius(val) {
+    return (val - 273.15).toFixed(2);
   }
 
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
-    .then(res => {
-      if (!res.ok) throw new Error("City not found");
-      return res.json();
-    })
-    .then(data => {
-      city.textContent = `🌍 City: ${data.name}`;
-      temp.textContent = `🌡️ Temperature: ${kelvinToCelsius(data.main.temp)} °C`;
-      description.textContent = `🌤️ Conditions: ${data.weather[0].description}`;
-      wind.textContent = `💨 Wind Speed: ${data.wind.speed} km/h`;
+  btn.addEventListener("click", function() {
+    const cityName = inputVal.value.trim();
+    errorMsg.textContent = "";
+    
+    if (!cityName) {
+      errorMsg.textContent = "Please enter a city name.";
+      return;
+    }
 
-      inputVal.value = "";
-    })
-    .catch(err => {
-      errorMsg.textContent = "You entered an invalid city name.";
-      city.textContent = "";
-      temp.textContent = "";
-      description.textContent = "";
-      wind.textContent = "";
-    });
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
+      .then(res => {
+        if (!res.ok) throw new Error("City not found");
+        return res.json();
+      })
+      .then(data => {
+        city.textContent = `🌍 City: ${data.name}`;
+        temp.textContent = `🌡️ Temperature: ${kelvinToCelsius(data.main.temp)} °C`;
+        description.textContent = `🌤️ Conditions: ${data.weather[0].description}`;
+        wind.textContent = `💨 Wind Speed: ${data.wind.speed} km/h`;
+        inputVal.value = "";
+      })
+      .catch(() => {
+        errorMsg.textContent = "You entered an invalid city name.";
+        city.textContent = "";
+        temp.textContent = "";
+        description.textContent = "";
+        wind.textContent = "";
+      });
+  });
 });
