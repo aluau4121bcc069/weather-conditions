@@ -1,16 +1,14 @@
-/* Body styling */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #87cefa, #f0f8ff); /* sky gradient */
+  background: linear-gradient(to bottom, #87cefa, #f0f8ff);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-/* Container styling */
 .container {
   background: rgba(255, 255, 255, 0.95);
   padding: 50px 70px;
@@ -19,92 +17,27 @@ body {
   width: 90%;
   max-width: 500px;
   text-align: center;
-  transition: transform 0.3s ease;
 }
 
-.container:hover {
-  transform: translateY(-5px);
-}
+h2 { margin-bottom: 25px; color: #333; font-size: 2rem; }
 
-/* Heading */
-h2 {
-  margin-bottom: 25px;
-  color: #333;
-  font-size: 2rem;
-}
-
-/* Input section styling */
-.input-section {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
+.input-section { display: flex; gap: 15px; margin-bottom: 20px; }
 
 .input-section input {
-  flex: 1;
-  padding: 12px 15px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  outline: none;
-  transition: 0.3s;
-}
-
-.input-section input:focus {
-  border-color: #009703;
-  box-shadow: 0 0 5px #009703;
+  flex: 1; padding: 12px 15px; font-size: 16px;
+  border: 1px solid #ccc; border-radius: 10px; outline: none;
 }
 
 .input-section button {
   padding: 12px 20px;
   background-color: #009703;
-  color: white;
-  border: none;
-  font-size: 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
+  color: white; border: none; border-radius: 10px; cursor: pointer;
 }
 
-.input-section button:hover {
-  background-color: #94df98;
-  transform: scale(1.05);
-}
+.input-section button:hover { background-color: #94df98; }
 
-/* Error message styling */
-#errorMsg {
-  color: red;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+#errorMsg { color: red; font-weight: bold; margin-bottom: 10px; }
 
-/* Weather display styling */
-.weather-display {
-  margin-top: 20px;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.weather-display h3,
-.weather-display p {
-  margin: 10px 0;
-  color: #333;
-  font-size: 1.1rem;
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-  .container {
-    padding: 30px 20px;
-  }
-  h2 { font-size: 1.5rem; }
-  .input-section input, .input-section button {
-    font-size: 14px;
-    padding: 10px;
-  }
+.weather-display h3, .weather-display p {
+  margin: 10px 0; color: #333; font-size: 1.1rem;
 }
